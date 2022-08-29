@@ -1,0 +1,36 @@
+.src-btn {
+  background-color: #fff;
+  color: #fd126e;
+  border: 1px solid #fd126e;
+  font-weight: 600;
+}
+
+.src-btn:hover {
+  color: #fff;
+  border: 1px solid #fd126e;
+  background-color: #fd126e;
+  font-weight: 600;
+}
+
+.src-field {
+  border: 1px solid #fd126e;
+}
+
+.src-field:focus {
+  border-color: #fd126e !important;
+  box-shadow: none;
+  color: #000;
+}
+
+@media (min-width: 992px) {
+  .header-img {
+    height: 100vh !important;
+    object-position: top;
+  }
+}
+
+@media (max-width: 767px) {
+  .src-field {
+    width: 70% !important;
+  }
+}
