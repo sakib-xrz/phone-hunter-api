@@ -1,21 +1,32 @@
-const loadData = async (search_text) => {
+const loadData = async (search_text, dataLimit) => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${search_text}`;
   const res = await fetch(url);
   const data = await res.json();
-  displayPhone(data.data);
+  displayPhone(data.data, dataLimit);
 };
 
-const displayPhone = (allPhone) => {
-//   console.log(allPhone);
-const notFound = document.getElementById("notFoundMsg");
-    if (allPhone.length === 0) {
-        notFound.classList.remove('d-none');
-    }else{
-        notFound.classList.add('d-none');
-    }
+const displayPhone = (allPhone, dataLimit) => {
   const card_div = document.getElementById("card-div");
-  card_div.innerHTML = "";
-  allPhone = allPhone.slice(0,15);
+  card_div.textContent = "";
+
+  // display 12 phone
+  const showAllBtn = document.getElementById("showAll");
+  if (dataLimit && allPhone.length > 12) {
+    allPhone = allPhone.slice(0, 12);
+    showAllBtn.classList.remove("d-none");
+  } else {
+    showAllBtn.classList.add("d-none");
+  }
+
+  // display no phones found
+  const notFound = document.getElementById("notFoundMsg");
+  if (allPhone.length === 0) {
+    notFound.classList.remove("d-none");
+  } else {
+    notFound.classList.add("d-none");
+  }
+
+  // display all phones
   allPhone.forEach((phone) => {
     const create_div = document.createElement("div");
     create_div.classList.add("col");
@@ -29,11 +40,38 @@ const notFound = document.getElementById("notFoundMsg");
         `;
     card_div.appendChild(create_div);
   });
+  // stop spinner
+  spinner(false);
+};
+
+const processSearch = (dataLimit) => {
+  spinner(true);
+  const search_field = document.getElementById("search-field");
+  const search_text = search_field.value;
+  loadData(search_text, dataLimit);
 };
 
 const searchPhone = () => {
-  const search_field = document.getElementById("search-field");
-  const search_text = search_field.value;
-  search_field.value = "";
-  loadData(search_text);
+  processSearch(12);
 };
+
+document
+  .getElementById("search-field")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      processSearch(12);
+    }
+  });
+
+const spinner = (isLoading) => {
+  const spinner = document.getElementById("spinner");
+  if (isLoading) {
+    spinner.classList.remove("d-none");
+  } else {
+    spinner.classList.add("d-none");
+  }
+};
+
+document.getElementById("show-all").addEventListener("click", function () {
+  processSearch();
+});

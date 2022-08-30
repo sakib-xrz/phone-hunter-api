@@ -49,18 +49,46 @@
       </section>
       <!-- card -->
 
-      <section class="container pt-3">
+      <section class="container">
         <div
           id="card-div"
-          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-4"
         ></div>
       </section>
 
-      <h1 id="notFoundMsg" style="color: #fd126e" class="text-center text-uppercase fw-bold p-3 d-none">
+      <!-- nothing found  -->
+      <h1
+        id="notFoundMsg"
+        style="color: #fd126e"
+        class="text-center text-uppercase fw-bold p-3 d-none"
+      >
         No Phone Found.
       </h1>
+
+      <!-- loader -->
+      <div
+        id="spinner"
+        class="d-flex justify-content-center align-items-center spinner-div d-none"
+      >
+        <div class="spinner-border spinner" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- show all button  -->
+      <div id="showAll" class="text-center d-none">
+        <button id="show-all" class="btn src-btn text-uppercase">
+          Show All
+        </button>
+      </div>
     </main>
 
+    <footer style="background-color: #0a0339" class="py-3 mt-5">
+      <p class="text-center text-white my-3">
+        &copy; 2022 All Right Reserved<br />
+        <span style="color: #fd126e">Md. Sakibul Islam</span>
+      </p>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
