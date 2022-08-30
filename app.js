@@ -35,6 +35,11 @@ const displayPhone = (allPhone, dataLimit) => {
                 <img src="${phone.image}" class="card-img-top p-4 h-75 w-75 mx-auto" alt="">
               <div class="card-body">
                 <h3 class="card-title text-center fw-bold">${phone.phone_name}</h3>
+                <div class="text-center my-3">
+                  <button id="show-all" class="btn show-details-btn text-uppercase">
+                    Show Details
+                  </button>
+                </div>
               </div>
             </div>
         `;
