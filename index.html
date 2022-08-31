@@ -81,6 +81,74 @@
           Show All
         </button>
       </div>
+
+      <!-- modal -->
+
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5
+                class="modal-title text-center w-100"
+                id="exampleModalLabel"
+              ></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <!-- modal body card -->
+              <div class="card mb-3" style="max-width: 540px">
+                <div class="row g-0">
+                  <div
+                    id="phone-image-div"
+                    class="col-md-4 d-flex align-items-center justify-content-center"
+                  >
+                    <img
+                      id="phone-image"
+                      src=""
+                      class="img-fluid rounded-start p-3"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 id="phone-name" class="card-title"></h5>
+                      <p id="phone-display" class="card-text"></p>
+                      <p id="phone-storage" class="card-text"></p>
+                      <p id="phone-memory" class="card-text"></p>
+                      <p id="phone-releaseDate" class="card-text">
+                        <small class="text-muted"></small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- modal body card end -->
+            </div>
+            <div class="modal-footer">
+              <button
+                style="background-color: #fd126e; border: none"
+                ;
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer style="background-color: #0a0339" class="py-3 mt-5">

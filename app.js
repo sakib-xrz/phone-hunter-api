@@ -11,8 +11,8 @@ const displayPhone = (allPhone, dataLimit) => {
 
   // display 12 phone
   const showAllBtn = document.getElementById("showAll");
-  if (dataLimit && allPhone.length > 12) {
-    allPhone = allPhone.slice(0, 12);
+  if (dataLimit && allPhone.length > 15) {
+    allPhone = allPhone.slice(0, 15);
     showAllBtn.classList.remove("d-none");
   } else {
     showAllBtn.classList.add("d-none");
@@ -36,7 +36,8 @@ const displayPhone = (allPhone, dataLimit) => {
               <div class="card-body">
                 <h3 class="card-title text-center fw-bold">${phone.phone_name}</h3>
                 <div class="text-center my-3">
-                  <button id="show-all" class="btn show-details-btn text-uppercase">
+                  <button id="show-all" class="btn show-details-btn text-uppercase" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal" onclick="loadPhoneDetails('${phone.slug}')">
                     Show Details
                   </button>
                 </div>
@@ -80,3 +81,38 @@ const spinner = (isLoading) => {
 document.getElementById("show-all").addEventListener("click", function () {
   processSearch();
 });
+
+const loadPhoneDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayPhoneDetails(data.data);
+};
+
+const displayPhoneDetails = (phone) => {
+  console.log(phone);
+  const modalBrandName = document.getElementById("exampleModalLabel");
+  modalBrandName.innerText = phone.brand;
+
+  const modalPhoneName = document.getElementById("phone-name");
+  modalPhoneName.innerText = phone.name;
+
+  const modalPhoneImage = document.getElementById("phone-image");
+  modalPhoneImage.src = `${phone.image}`;
+
+  const modalPhoneDisplay = document.getElementById("phone-display");
+  modalPhoneDisplay.innerText = `Display Size: ${phone.mainFeatures.displaySize}`;
+
+  const modalPhoneStorage = document.getElementById("phone-storage");
+  modalPhoneStorage.innerText = `Storage: ${phone.mainFeatures.storage}`;
+
+  const modalPhoneMemory = document.getElementById("phone-memory");
+  modalPhoneMemory.innerText = `Memory: ${phone.mainFeatures.memory}`;
+
+  const phone_releaseDate = document.getElementById("phone-releaseDate");
+  phone_releaseDate.innerText = phone.releaseDate
+    ? phone.releaseDate
+    : "No Release Date Found";
+};
+
+loadData("iPhone");

@@ -1,11 +1,13 @@
-.src-btn, .show-details-btn:hover {
+.src-btn,
+.show-details-btn:hover {
   background-color: #fff;
   color: #fd126e;
   border: 1px solid #fd126e;
   font-weight: 600;
 }
 
-.src-btn:hover, .show-details-btn {
+.src-btn:hover,
+.show-details-btn {
   color: #fff;
   border: 1px solid #fd126e;
   background-color: #fd126e;
